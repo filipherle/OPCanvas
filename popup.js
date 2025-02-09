@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    procrastinateButton.addEventListener('click', RandomDle)
+    procrastinateButton.addEventListener('click', RandomDle())
 
     // Load saved state from Chrome storage
     chrome.storage.local.get("quizMode", (data) => {
