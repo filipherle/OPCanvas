@@ -18,6 +18,12 @@
       "matches": [
         "https://canvas.ubc.ca/courses/*/quizzes/*"
       ]
+    },
+    {
+      "js": ["scripts/roast.js"],
+      "matches": [
+        "https://canvas.ubc.ca/courses/*/grades"
+        ]
     }
   ],
   "permissions": ["storage", "activeTab", "scripting"],
