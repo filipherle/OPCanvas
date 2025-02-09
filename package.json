@@ -1,0 +1,14 @@
+{
+  "name": "editme",
+  "version": "1.0.0",
+  "description": "bucs hackathon lfg",
+  "main": "popup.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "openai": "^4.83.0"
+  }
+}

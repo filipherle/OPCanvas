@@ -5,19 +5,40 @@
   "version": "0.1",
   "description": "You are welcome.",
   "action": {
-    "default_popup": "popup.html"
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "OP.png",
+      "48": "OP.png",
+      "128": "OP.png"
+    }
+  },
+
+  "background": {
+    "service_worker": "background.js"
   },
 
   "content_scripts": [
         {
             "matches": ["https://canvas.ubc.ca/courses/*/quizzes/*"],
             "js": ["scripts/quiz.js"]
+        }, 
+        {
+            "matches": ["https://canvas.ubc.ca/*"],
+            "js": ["scripts/aiMode.js"]
+        },
+        {
+            "matches": ["https://canvas.ubc.ca/*"],
+            "js": ["scripts/lockInMode.js"]
         }
     ],
 
-  
   "permissions": ["storage", "activeTab", "scripting"],
   "host_permissions": [
     "https://canvas.ubc.ca/*"
-  ]
+  ],
+"icons": {
+  "16": "OP.png",
+  "48": "OP.png",
+  "128": "OP.png"
+}
 }
