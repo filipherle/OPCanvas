@@ -1,9 +1,17 @@
+
 {
   "manifest_version": 3,
-  "name": "Canvas extension",
+  "name": "Canvas Extension",
   "version": "0.1",
   "description": "Make Canvas better",
-
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
   "content_scripts": [
     {
       "js": ["scripts/quiz.js"],
@@ -11,5 +19,9 @@
         "https://canvas.ubc.ca/courses/*/quizzes/*"
       ]
     }
+  ],
+  "permissions": ["storage", "activeTab", "scripting"],
+  "host_permissions": [
+    "https://canvas.ubc.ca/*"
   ]
 }
