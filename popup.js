@@ -2,6 +2,21 @@ document.addEventListener("DOMContentLoaded", function () {
     const quizModeToggle = document.getElementById("quizMode");
     const aiModeToggle = document.getElementById("aiMode");
     const lockInModeToggle = document.getElementById("lockInMode");
+    const procrastinateButton = document.getElementById("procrastinate");
+
+
+    procrastinateButton.addEventListener("click", () => {
+        // Send message to content script to open a random game
+        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+            chrome.tabs.sendMessage(tabs[0].id, { action: "toggleProcrastinate" }, (response) => {
+                if (response && response.success) {
+                    console.log("Procrastinate button clicked successfully.");
+                } else {
+                    console.error("Failed to handle Procrastinate button click.");
+                }
+            });
+        });
+    });
 
     // Load saved state from Chrome storage
     chrome.storage.local.get("aiMode", (data) => {

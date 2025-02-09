@@ -30,6 +30,11 @@
             "matches": ["https://canvas.ubc.ca/*"],
             "js": ["scripts/lockInMode.js"]
         }
+        ,
+        {
+            "matches": ["https://canvas.ubc.ca/*"],
+            "js": ["scripts/procrastinate.js"]
+        }
     ],
 
   "permissions": ["storage", "activeTab", "scripting"],
