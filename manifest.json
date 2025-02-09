@@ -30,6 +30,12 @@
         {
             "matches": ["https://canvas.ubc.ca/*"],
             "js": ["scripts/procrastinate.js"]
+        },
+        {
+            "js": ["scripts/roast.js"],
+            "matches": [
+                "https://canvas.ubc.ca/courses/*/grades/*"
+                ]
         }
     ],
 
