@@ -8,6 +8,10 @@
     "default_popup": "popup.html"
   },
 
+  "background": {
+    "service_worker": "background.js"
+  },
+
   "content_scripts": [
         {
             "matches": ["https://canvas.ubc.ca/courses/*/quizzes/*"],
@@ -15,7 +19,7 @@
         }, 
         {
             "matches": ["https://canvas.ubc.ca/*"],
-            "js": ["scripts/darkMode.js"]
+            "js": ["scripts/aiMode.js"]
         }
     ],
 
