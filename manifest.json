@@ -4,17 +4,19 @@
   "name": "Canvas Extension",
   "version": "0.1",
   "description": "Make Canvas better",
+
   "action": {
     "default_popup": "popup.html"
   },
+
   "content_scripts": [
-    {
-      "js": ["scripts/quiz.js"],
-      "matches": [
-        "https://canvas.ubc.ca/courses/*/quizzes/*"
-      ]
-    }
-  ],
+        {
+            "matches": ["https://canvas.ubc.ca/courses/*/quizzes/*"],
+            "js": ["scripts/quiz.js"]
+        }
+    ],
+
+  
   "permissions": ["storage", "activeTab", "scripting"],
   "host_permissions": [
     "https://canvas.ubc.ca/*"
