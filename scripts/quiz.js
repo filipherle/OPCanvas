@@ -36,9 +36,9 @@ var numericalAnswers = Array.from(document.querySelectorAll("[class*=numerical_e
 numericalAnswers.forEach((ans) => ans.style.display = "none");
 
 // Extra cleanup to make print out look better
-hideIfExists("header");
-hideIfExists("left-side");
-hideIfExists("right-side-wrapper");
+// hideIfExists("header");
+// hideIfExists("left-side");
+// hideIfExists("right-side-wrapper");
 hideIfExists("module_sequence_footer");
 
 Array.from(document.querySelectorAll("[class*=quiz-header] > div")).forEach((d) => d.style.display = "none");
