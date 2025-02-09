@@ -5,7 +5,12 @@
   "version": "0.1",
   "description": "You are welcome.",
   "action": {
-    "default_popup": "popup.html"
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "OP.png",
+      "48": "OP.png",
+      "128": "OP.png"
+    }
   },
 
   "content_scripts": [
@@ -19,5 +24,10 @@
   "permissions": ["storage", "activeTab", "scripting"],
   "host_permissions": [
     "https://canvas.ubc.ca/*"
-  ]
+  ],
+"icons": {
+  "16": "OP.png",
+  "48": "OP.png",
+  "128": "OP.png"
+}
 }
