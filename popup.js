@@ -1,7 +1,11 @@
+import { RandomDle } from "./scripts/procrastinate";
+
+
 document.addEventListener("DOMContentLoaded", function () {
     const quizModeToggle = document.getElementById("quizMode");
     const aiModeToggle = document.getElementById("aiMode");
     const lockInModeToggle = document.getElementById("lockInMode");
+    const procrastinateButton = document.getElementById('procrastinate')
 
     // Load saved state from Chrome storage
     chrome.storage.local.get("aiMode", (data) => {
@@ -28,6 +32,8 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
+    procrastinateButton.addEventListener('click', RandomDle)
+
     // Load saved state from Chrome storage
     chrome.storage.local.get("quizMode", (data) => {
         quizModeToggle.checked = data.quizMode || false;
@@ -53,6 +59,8 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     });
+
+ 
 
 
     chrome.storage.local.get("lockInMode", (data) => {

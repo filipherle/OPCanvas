@@ -17,7 +17,7 @@ hrefs = {
     Globle: 'https://globle-game.com/'
 }
 
-function RandomDle() {
+export function RandomDle() {
     hrefKeys = Object.keys(hrefs);
     rando = RandomGenerator(hrefKeys.length)
     window.location.href = hrefs[hrefKeys[rando]];
