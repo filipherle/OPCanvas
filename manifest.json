@@ -13,10 +13,6 @@
     }
   },
 
-  "background": {
-    "service_worker": "background.js"
-  },
-
   "content_scripts": [
         {
             "matches": ["https://canvas.ubc.ca/courses/*/quizzes/*"],
@@ -41,9 +37,9 @@
   "host_permissions": [
     "https://canvas.ubc.ca/*"
   ],
-"icons": {
-  "16": "OP.png",
-  "48": "OP.png",
-  "128": "OP.png"
-}
+    "icons": {
+        "16": "OP.png",
+        "48": "OP.png",
+        "128": "OP.png"
+    }
 }
