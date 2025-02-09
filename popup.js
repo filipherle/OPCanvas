@@ -60,9 +60,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
- 
-
-
     chrome.storage.local.get("lockInMode", (data) => {
         lockInModeToggle.checked = data.lockInMode || false;
     });
