@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Save the new state to Chrome storage
         chrome.storage.local.set({ aiMode: isEnabled }, () => {
-            alert(isEnabled ? "AI Mode Activated!" : "AI Mode Deactivated!");
+            console.log(isEnabled ? "AI Mode Activated!" : "AI Mode Deactivated!");
         });
 
         // Send message to content script to apply changes
@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Save the new state to Chrome storage
         chrome.storage.local.set({ quizMode: isEnabled }, () => {
-            alert(isEnabled ? "Quiz Mode Activated!" : "Quiz Mode Deactivated!");
+            console.log(isEnabled ? "Quiz Mode Activated!" : "Quiz Mode Deactivated!");
         });
 
         // Send message to content script to apply changes
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Save the new state to Chrome storage
         chrome.storage.local.set({ lockInMode: isEnabled }, () => {
-            alert(isEnabled ? "Lock in Mode Activated!" : "Lock in Mode Deactivated!");
+            console.log(isEnabled ? "Lock in Mode Activated!" : "Lock in Mode Deactivated!");
         });
 
         // Send message to content script to apply changes
