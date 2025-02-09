@@ -34,6 +34,7 @@ const hideElements = (elements) => {
 }
 
 // Main function to reset the quiz page
+// Function to reset the quiz page
 const resetQuizPage = () => {
     // Reset greyed out questions
     const greyedOutQuestions = Array.from(document.querySelectorAll(".answer")).filter((elem) => window.getComputedStyle(elem).opacity == 0.5);
@@ -82,7 +83,12 @@ const resetQuizPage = () => {
     Array.from(document.querySelectorAll("[class*=quiz-header] > div")).forEach((d) => d.style.display = "none");
     Array.from(document.querySelectorAll(".quiz-submission > *")).filter((div) => div.id != "questions").forEach((div) => div.style.display = "none");
     Array.from(document.querySelectorAll("#wrapper > *")).filter((div) => div.id != "main").forEach((div) => div.style.display = "none");
-}
+};
 
-// Run the reset function
-resetQuizPage();
+// Listen for messages from the popup script
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (message.action === "resetQuizPage") {
+        resetQuizPage();
+        sendResponse({ success: true }); // Send a response back to the popup
+    }
+});
