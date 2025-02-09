@@ -16,7 +16,9 @@
     {
       "js": ["scripts/quiz.js"],
       "matches": [
-        "https://canvas.ubc.ca/courses/*/quizzes/*"
+        "https://canvas.ubc.ca/courses/*/quizzes/*",
+        "http://canvas.ubc.ca/courses/*/quizzes/*",
+        "https://canvas.ubc.ca/courses/*/quizzes/*/"
       ]
     },
     {

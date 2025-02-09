@@ -1,46 +1,88 @@
 const hideIfExists = (id) => {
-    var elem = document.getElementById(id);
+    const elem = document.getElementById(id);
     if (elem) {
         elem.style.display = "none";
     }
 }
 
-var greyedOutQuestions = Array.from(document.querySelectorAll(".answer")).filter((elem) => window.getComputedStyle(elem).opacity == 0.5);
-greyedOutQuestions.forEach((q) => q.style.opacity = 1);
+const resetStyles = (elements, styleProperty, value) => {
+    elements.forEach((elem) => elem.style[styleProperty] = value);
+}
 
-var arrows = Array.from(document.querySelectorAll("[class*=answer_arrow]"));
-arrows.forEach((a) => a.style.display = "none");
+const removeClass = (elements, className) => {
+    elements.forEach((elem) => elem.classList.remove(className));
+}
 
-var redOutline = Array.from(document.querySelectorAll(".wrong_answer"));
-redOutline.forEach((r) => r.classList.remove("wrong_answer"));
+const resetInputs = (inputs) => {
+    inputs.forEach((input) => input.checked = false);
+}
 
-var inputs = Array.from(document.getElementsByTagName("input"));
-inputs.forEach((i) => i.checked = false);
+const resetSelects = (selects) => {
+    selects.forEach((select) => select.innerText = "");
+}
 
-var points = Array.from(document.querySelectorAll("[class*=user_points]"));
-points.forEach((p) => p.style.display = "none");
+const resetTitles = (elements) => {
+    elements.forEach((elem) => elem.title = "");
+}
 
-var comments = Array.from(document.querySelectorAll("[class*=quiz_comment]"));
-comments.forEach((c) => c.style.display = "none");
+const resetValues = (elements) => {
+    elements.forEach((elem) => elem.value = "");
+}
 
-var selects = Array.from(document.getElementsByTagName("select"));
-selects.forEach((s) => s.innerText = "");
+const hideElements = (elements) => {
+    elements.forEach((elem) => elem.style.display = "none");
+}
 
-var selectedAnswers = Array.from(document.querySelectorAll("[class*=selected_answer]"));
-selectedAnswers.forEach((ans) => ans.title = "")
+// Main function to reset the quiz page
+const resetQuizPage = () => {
+    // Reset greyed out questions
+    const greyedOutQuestions = Array.from(document.querySelectorAll(".answer")).filter((elem) => window.getComputedStyle(elem).opacity == 0.5);
+    resetStyles(greyedOutQuestions, 'opacity', 1);
 
-var numberInputs = Array.from(document.querySelectorAll("[class*=numerical_question_input]"));
-numberInputs.forEach((num) => num.value = "");
+    // Hide arrows
+    const arrows = Array.from(document.querySelectorAll("[class*=answer_arrow]"));
+    hideElements(arrows);
 
-var numericalAnswers = Array.from(document.querySelectorAll("[class*=numerical_exact_answer]")); 
-numericalAnswers.forEach((ans) => ans.style.display = "none");
+    // Remove red outline from wrong answers
+    const redOutline = Array.from(document.querySelectorAll(".wrong_answer"));
+    removeClass(redOutline, 'wrong_answer');
 
-// Extra cleanup to make print out look better
-hideIfExists("header");
-hideIfExists("left-side");
-hideIfExists("right-side-wrapper");
-hideIfExists("module_sequence_footer");
+    // Uncheck all inputs
+    const inputs = Array.from(document.getElementsByTagName("input"));
+    resetInputs(inputs);
 
-Array.from(document.querySelectorAll("[class*=quiz-header] > div")).forEach((d) => d.style.display = "none");
-Array.from(document.querySelectorAll(".quiz-submission > *")).filter((div) => div.id != "questions").forEach((div) => div.style.display = "none");
-Array.from(document.querySelectorAll("#wrapper > *")).filter((div) => div.id != "main").forEach((div) => div.style.display = "none");
+    // Hide points
+    const points = Array.from(document.querySelectorAll("[class*=user_points]"));
+    hideElements(points);
+
+    // Hide comments
+    const comments = Array.from(document.querySelectorAll("[class*=quiz_comment]"));
+    hideElements(comments);
+
+    // Reset selects
+    const selects = Array.from(document.getElementsByTagName("select"));
+    resetSelects(selects);
+
+    // Reset selected answers
+    const selectedAnswers = Array.from(document.querySelectorAll("[class*=selected_answer]"));
+    resetTitles(selectedAnswers);
+
+    // Reset number inputs
+    const numberInputs = Array.from(document.querySelectorAll("[class*=numerical_question_input]"));
+    resetValues(numberInputs);
+
+    // Hide numerical answers
+    const numericalAnswers = Array.from(document.querySelectorAll("[class*=numerical_exact_answer]"));
+    hideElements(numericalAnswers);
+
+    // Extra cleanup to make print out look better
+    hideIfExists("module_sequence_footer");
+
+    // Hide unnecessary elements
+    Array.from(document.querySelectorAll("[class*=quiz-header] > div")).forEach((d) => d.style.display = "none");
+    Array.from(document.querySelectorAll(".quiz-submission > *")).filter((div) => div.id != "questions").forEach((div) => div.style.display = "none");
+    Array.from(document.querySelectorAll("#wrapper > *")).filter((div) => div.id != "main").forEach((div) => div.style.display = "none");
+}
+
+// Run the reset function
+resetQuizPage();
