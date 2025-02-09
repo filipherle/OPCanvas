@@ -20,6 +20,10 @@
         {
             "matches": ["https://canvas.ubc.ca/*"],
             "js": ["scripts/aiMode.js"]
+        },
+        {
+            "matches": ["https://canvas.ubc.ca/*"],
+            "js": ["scripts/lockInMode.js"]
         }
     ],
 

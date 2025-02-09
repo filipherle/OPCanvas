@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const quizModeToggle = document.getElementById("quizMode");
     const aiModeToggle = document.getElementById("aiMode");
+    const lockInModeToggle = document.getElementById("lockInMode");
 
     // Load saved state from Chrome storage
     chrome.storage.local.get("aiMode", (data) => {
@@ -48,6 +49,32 @@ document.addEventListener("DOMContentLoaded", function () {
                     console.log("Quiz Mode toggled successfully.");
                 } else {
                     console.error("Failed to toggle Quiz Mode.");
+                }
+            });
+        });
+    });
+
+
+    chrome.storage.local.get("lockInMode", (data) => {
+        lockInModeToggle.checked = data.lockInMode || false;
+    });
+
+    // Toggle event listener
+    lockInModeToggle.addEventListener("change", () => {
+        const isEnabled = lockInModeToggle.checked;
+
+        // Save the new state to Chrome storage
+        chrome.storage.local.set({ lockInMode: isEnabled }, () => {
+            alert(isEnabled ? "Lock in Mode Activated!" : "Lock in Mode Deactivated!");
+        });
+
+        // Send message to content script to apply changes
+        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+            chrome.tabs.sendMessage(tabs[0].id, { action: "toggleLockInMode", enabled: isEnabled }, (response) => {
+                if (response && response.success) {
+                    console.log("lock Mode toggled successfully.");
+                } else {
+                    console.error("Failed to toggle lock in Mode.");
                 }
             });
         });

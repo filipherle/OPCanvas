@@ -1,7 +1,7 @@
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.action === "toggleAIMode") {
         if (message.enabled) {
-            resetQuizPage(); // Enable Quiz Mode
+            //resetQuizPage(); // Enable Quiz Mode
         } else {
             revertQuizPage(); // Disable Quiz Mode
         }
