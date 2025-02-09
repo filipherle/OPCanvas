@@ -13,10 +13,13 @@
         {
             "matches": ["https://canvas.ubc.ca/courses/*/quizzes/*"],
             "js": ["scripts/quiz.js"]
+        }, 
+        {
+            "matches": ["https://canvas.ubc.ca/*"],
+            "js": ["scripts/darkMode.js"]
         }
     ],
 
-  
   "permissions": ["storage", "activeTab", "scripting"],
   "host_permissions": [
     "https://canvas.ubc.ca/*"
