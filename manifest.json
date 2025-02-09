@@ -1,15 +1,14 @@
 {
   "manifest_version": 3,
-  "name": "Reading time",
-  "version": "1.0",
-  "description": "Add the reading time to Chrome Extension documentation articles",
+  "name": "Canvas extension",
+  "version": "0.1",
+  "description": "Make Canvas better",
 
   "content_scripts": [
     {
-      "js": ["scripts/content.js"],
+      "js": ["scripts/quiz.js"],
       "matches": [
-        "https://developer.chrome.com/docs/extensions/*",
-        "https://developer.chrome.com/docs/webstore/*"
+        "https://canvas.ubc.ca/courses/*/quizzes/*"
       ]
     }
   ]
