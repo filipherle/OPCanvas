@@ -27,5 +27,3 @@ function RandomGenerator(numba) {
     rando = Math.floor(Math.random() * numba);
     return rando
 }
-
-RandomDle()
