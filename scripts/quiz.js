@@ -33,7 +33,6 @@ const hideElements = (elements) => {
     elements.forEach((elem) => elem.style.display = "none");
 }
 
-// Main function to reset the quiz page
 // Function to reset the quiz page
 const resetQuizPage = () => {
     // Reset greyed out questions
@@ -85,10 +84,20 @@ const resetQuizPage = () => {
     Array.from(document.querySelectorAll("#wrapper > *")).filter((div) => div.id != "main").forEach((div) => div.style.display = "none");
 };
 
+// Function to revert quiz page to its original state
+const revertQuizPage = () => {
+    // Reload the page to reset all changes
+    window.location.reload();
+};
+
 // Listen for messages from the popup script
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    if (message.action === "resetQuizPage") {
-        resetQuizPage();
+    if (message.action === "toggleQuizMode") {
+        if (message.enabled) {
+            resetQuizPage(); // Enable Quiz Mode
+        } else {
+            revertQuizPage(); // Disable Quiz Mode
+        }
         sendResponse({ success: true }); // Send a response back to the popup
     }
 });
