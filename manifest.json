@@ -24,7 +24,7 @@
     {
       "js": ["scripts/roast.js"],
       "matches": [
-        "https://canvas.ubc.ca/courses/*/grades"
+        "https://canvas.ubc.ca/courses/*/grades/*"
         ]
     }
   ],
