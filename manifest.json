@@ -1,21 +1,24 @@
+
 {
   "manifest_version": 3,
-  "name": "Canvas extension",
+  "name": "Canvas Extension",
   "version": "0.1",
   "description": "Make Canvas better",
 
   "action": {
-    "default_popup": "main.html"
+    "default_popup": "popup.html"
   },
 
   "content_scripts": [
-    {
-      "js": ["scripts/quiz.js"],
-      "matches": [
-        "https://canvas.ubc.ca/courses/*/quizzes/*",
-        "http://canvas.ubc.ca/courses/*/quizzes/*",
-        "https://canvas.ubc.ca/courses/*/quizzes/*/"
-      ]
-    }
+        {
+            "matches": ["https://canvas.ubc.ca/courses/*/quizzes/*"],
+            "js": ["scripts/quiz.js"]
+        }
+    ],
+
+  
+  "permissions": ["storage", "activeTab", "scripting"],
+  "host_permissions": [
+    "https://canvas.ubc.ca/*"
   ]
 }
