@@ -1,7 +1,6 @@
 let dialogOpen = false;
 
 async function handleSelection() {
-  // If a dialog is already open, do nothing.
   if (dialogOpen) return;
 
   const selectedText = window.getSelection().toString().trim();
@@ -29,7 +28,6 @@ function showDialogInfo(message) {
   dialogOpen = true;
   const dialog = $('<div>').html(message);
 
-  // Initialize the jQuery UI dialog 
   dialog.dialog({
     title: 'Information',
     modal: true, 

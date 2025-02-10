@@ -9,49 +9,45 @@ function getCurrentGrade() {
 
     let numerator, denominator;
 
-    // Case 1: Use .grade element (Canvas page)
     if (gradeElement) {
-        const gradeText = gradeElement.parentElement.innerText.trim(); // e.g., "10 / 10"
+        const gradeText = gradeElement.parentElement.innerText.trim();
         const [numeratorText, denominatorText] = gradeText.split('/').map((s) => s.trim());
         numerator = parseFloat(numeratorText);
         denominator = parseFloat(denominatorText);
     }
-    // Case 2: Use .entered_grade element (Canvas page)
+
     else if (enteredGradeElement) {
-        const enteredGradeText = enteredGradeElement.parentElement.innerText.trim(); // e.g., "10 / 10"
+        const enteredGradeText = enteredGradeElement.parentElement.innerText.trim();
         const [numeratorText, denominatorText] = enteredGradeText.split('/').map((s) => s.trim());
         numerator = parseFloat(numeratorText);
         denominator = parseFloat(denominatorText);
     }
-    // Case 3: Use .quiz_score element (Quiz page)
+
     else if (quizScoreElement) {
-        // The quiz_score element looks like:
-        // <div class="quiz_score">Score for this quiz:
-        //   <span class="score_value">5</span> out of 5
-        // </div>
+
         const scoreValueElement = quizScoreElement.querySelector('.score_value');
         if (scoreValueElement) {
             numerator = parseFloat(scoreValueElement.innerText);
         }
-        // Extract the denominator from the text. We look for "out of" followed by a number.
+
         const quizScoreText = quizScoreElement.textContent;
         const match = quizScoreText.match(/out of\s+(\d+(\.\d+)?)/i);
         if (match) {
             denominator = parseFloat(match[1]);
         }
     }
-    // If no recognizable grade element is found, return null
+
     else {
         return null;
     }
 
-    // Validate that denominator is non-zero and the numbers are valid
+
     if (denominator === 0 || isNaN(numerator) || isNaN(denominator)) {
         console.error("Invalid grade information: denominator is zero or not a valid number.");
         return null;
     }
 
-    // Calculate and return the percentage
+
     const percentage = (numerator / denominator) * 100;
     return percentage;
 }
@@ -74,9 +70,6 @@ function showDialog(message) {
   });
 }
 
-
-
-// Function to display a savage roast based on the grade
 function roastGrade(grade) {
     const savageRoasts = [
         "Oof, that's a *rough* one. Did you forget about this class? Or is this a cry for help?",
@@ -115,24 +108,20 @@ function roastGrade(grade) {
         } else if (grade >= 82) {
             roastMessage = "Looking good, but you could still be a little less average. Nice try!";
         } else {
-            // For grades below 82, randomly pick from the savage roasts array.
             roastMessage = savageRoasts[Math.floor(Math.random() * savageRoasts.length)];
         }
     } else {
         roastMessage = "Can't find your grade? Guess that’s the best result yet!";
     }
 
-    // Find the element in the popup to display the roast
-    //alert(roastMessage);
     showDialog(roastMessage);
 }
 
-// Listen for messages from the popup script
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.action === "toggleRoastMode") {
         const currentGrade = getCurrentGrade();
         roastGrade(currentGrade);
         console.log(currentGrade);
-        sendResponse({ success: true }); // Send a response back to the popup
+        sendResponse({ success: true });
     }
 });

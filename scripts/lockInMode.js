@@ -13,14 +13,17 @@ const lockInMode = () => {
 }
 
 
-// Listen for messages from the popup script
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.action === "toggleLockInMode") {
         if (message.enabled) {
             lockInMode();
         } else {
-            revertQuizPage(); // Disable Quiz Mode
+            revertQuizPage2(); 
         }
-        sendResponse({ success: true }); // Send a response back to the popup
+        sendResponse({ success: true });
     }
 });
+
+const revertQuizPage2 = () => {
+    window.location.reload();
+};

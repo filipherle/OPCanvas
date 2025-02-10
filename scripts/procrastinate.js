@@ -27,15 +27,13 @@ const RandomDle = () => {
 
     hrefKeys = Object.keys(hrefs);
     rando = RandomGenerator(hrefKeys.length)
-    //window.location.href = hrefs[hrefKeys[rando]];
     window.open(hrefs[hrefKeys[rando]], '_blank');
 }
 
 
-// Listen for messages from the popup script
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.action === "toggleProcrastinate") {
         RandomDle();
-        sendResponse({ success: true }); // Send a response back to the popup
+        sendResponse({ success: true }); 
     }
 });
