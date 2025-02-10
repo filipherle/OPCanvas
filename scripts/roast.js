@@ -62,7 +62,7 @@ function showDialog(message) {
 
   // Initialize the jQuery UI dialog with options
   dialog.dialog({
-    title: 'Information',
+    title: 'Roast:',
     modal: true, // Makes the dialog modal
     buttons: {
       "OK": function() {
@@ -114,10 +114,10 @@ function roastGrade(grade) {
     if (grade !== null) {
         if (grade >= 90) {
             roastMessage = "Wow, A+? Are you trying to make the rest of us look bad? *Send help.*";
-        } else if (grade >= 85) {
+        } else if (grade >= 82) {
             roastMessage = "Looking good, but you could still be a little less average. Nice try!";
         } else {
-            // For grades below 85, randomly pick from the savage roasts array.
+            // For grades below 82, randomly pick from the savage roasts array.
             roastMessage = savageRoasts[Math.floor(Math.random() * savageRoasts.length)];
         }
     } else {
@@ -126,7 +126,7 @@ function roastGrade(grade) {
 
     // Find the element in the popup to display the roast
     //alert(roastMessage);
-    showDialog("This is your custom message!");
+    showDialog(roastMessage);
 }
 
 // Listen for messages from the popup script
