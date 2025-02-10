@@ -57,20 +57,18 @@ function getCurrentGrade() {
 }
 
 function showDialog(message) {
-  // Create a new div element and set its HTML content to the provided message using jQuery
   const dialog = $('<div>').html(message);
 
-  // Initialize the jQuery UI dialog with options
   dialog.dialog({
     title: 'Roast:',
-    modal: true, // Makes the dialog modal
+    modal: true,
+    closeText: "X", 
     buttons: {
       "OK": function() {
         $(this).dialog("close");
       }
     },
     close: function() {
-      // Remove the dialog element from the DOM when it is closed
       $(this).remove();
     }
   });
