@@ -25,11 +25,14 @@
         {
             "matches": ["https://canvas.ubc.ca/*"],
             "js": ["scripts/lockInMode.js"]
-        }
-        ,
+        },
         {
             "matches": ["https://canvas.ubc.ca/*"],
             "js": ["scripts/procrastinate.js"]
+        },
+        {
+          "matches": ["https://canvas.ubc.ca/*"],
+          "js": ["scripts/wikipedia.js"]
         },
         {
             "js": ["scripts/roast.js"],
