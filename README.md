@@ -1,3 +1,2 @@
 # editme
-bucs hackathon
-lfg
+A Canvas Chrome extension that we made for BUCS Hackathon '25
