@@ -56,6 +56,27 @@ function getCurrentGrade() {
     return percentage;
 }
 
+function showDialog(message) {
+  // Create a new div element and set its HTML content to the provided message using jQuery
+  const dialog = $('<div>').html(message);
+
+  // Initialize the jQuery UI dialog with options
+  dialog.dialog({
+    title: 'Information',
+    modal: true, // Makes the dialog modal
+    buttons: {
+      "OK": function() {
+        $(this).dialog("close");
+      }
+    },
+    close: function() {
+      // Remove the dialog element from the DOM when it is closed
+      $(this).remove();
+    }
+  });
+}
+
+
 
 // Function to display a savage roast based on the grade
 function roastGrade(grade) {
@@ -104,7 +125,8 @@ function roastGrade(grade) {
     }
 
     // Find the element in the popup to display the roast
-    alert(roastMessage);
+    //alert(roastMessage);
+    showDialog("This is your custom message!");
 }
 
 // Listen for messages from the popup script

@@ -38,7 +38,17 @@
                 "https://canvas.ubc.ca/courses/*/assignments/*/submissions/*", 
                 "https://canvas.ubc.ca/*"
                 ]
-        }
+        }, 
+        {
+        "matches": ["https://canvas.ubc.ca/*"],
+        "js": [
+            "jquery-3.6.0.min.js",
+            "jquery-ui.min.js"
+        ],
+        "css": [
+            "jquery-ui.css"
+        ]
+    }
     ],
 
   "permissions": ["storage", "activeTab", "scripting"],
