@@ -4,8 +4,8 @@ document.addEventListener("keyup", handleSelection);
 async function handleSelection() {
   const selectedText = window.getSelection().toString().trim();
   console.log(!$("#dialogBox").dialog("isOpen"))
-  if (selectedText.length > 0 && !$("#dialogBox").dialog("isOpen")) {
-
+  if (selectedText.length > 0 ) {
+    //&& !$("#dialogBox").dialog("isOpen")
     const query = selectedText;
     const url = `https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${encodeURIComponent(query)}&format=json&origin=*`;
     var pageId = 0;
@@ -45,4 +45,3 @@ function showDialog(message) {
     }
   });
 }
-
