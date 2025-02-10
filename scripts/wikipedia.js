@@ -35,6 +35,7 @@ function showDialogInfo(message) {
   dialog.dialog({
     title: 'Information',
     modal: true, // Makes the dialog modal
+    closeText: "X", // Set the close button text to "X"
     buttons: {
       "OK": function() {
         $(this).dialog("close");
