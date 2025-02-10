@@ -13,9 +13,6 @@
     }
   },
 
-  "background": {
-    "service_worker": "background.js"
-  },
   "content_scripts": [
         {
             "matches": ["https://canvas.ubc.ca/courses/*/quizzes/*"],
@@ -35,18 +32,32 @@
             "js": ["scripts/procrastinate.js"]
         },
         {
-          "matches": ["https://canvas.ubc.ca/courses/*/quizzes/*"],
-          "js": ["scripts/wikipedia.js"]
-        }  
+            "js": ["scripts/roast.js"],
+            "matches": [
+                "https://canvas.ubc.ca/courses/*/grades/*", 
+                "https://canvas.ubc.ca/courses/*/assignments/*/submissions/*", 
+                "https://canvas.ubc.ca/*"
+                ]
+        }, 
+        {
+        "matches": ["https://canvas.ubc.ca/*"],
+        "js": [
+            "jquery-3.6.0.min.js",
+            "jquery-ui.min.js"
+        ],
+        "css": [
+            "jquery-ui.css"
+        ]
+    }
     ],
 
   "permissions": ["storage", "activeTab", "scripting"],
   "host_permissions": [
     "https://canvas.ubc.ca/*"
   ],
-"icons": {
-  "16": "OP.png",
-  "48": "OP.png",
-  "128": "OP.png"
-}
+    "icons": {
+        "16": "OP.png",
+        "48": "OP.png",
+        "128": "OP.png"
+    }
 }
