@@ -16,7 +16,6 @@
   "background": {
     "service_worker": "background.js"
   },
-
   "content_scripts": [
         {
             "matches": ["https://canvas.ubc.ca/courses/*/quizzes/*"],
@@ -34,7 +33,11 @@
         {
             "matches": ["https://canvas.ubc.ca/*"],
             "js": ["scripts/procrastinate.js"]
-        }
+        },
+        {
+          "matches": ["https://canvas.ubc.ca/courses/*/quizzes/*"],
+          "js": ["scripts/wikipedia.js"]
+        }  
     ],
 
   "permissions": ["storage", "activeTab", "scripting"],

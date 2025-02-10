@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text Selection Dialog with jQuery UI</title>
+  
+  <!-- Include jQuery and jQuery UI styles -->
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  
+  <style>
+    /* Custom styles for the dialog box */
+    #dialogBox {
+      display: none;  /* Hidden initially */
+    }
+  </style>
+</head>
+<body>
+
+  <p>Try selecting some text on this page to trigger the dialog box!</p>
+  <p>Highlight this text to see the dialog in action.</p>
+
+  <!-- Dialog Box (Initially hidden) -->
+  <div id="dialogBox" title="Selected Text">
+    <p>You selected some text!</p>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      // Initialize the dialog box
+      $("#dialogBox").dialog({
+        autoOpen: false,  // Don't open automatically
+        modal: true,      // Make the dialog modal
+        buttons: {
+          "Close": function () {
+            $(this).dialog("close");
+          }
+        }
+      });
+
+      // Detect text selection
+      $(document).on('mouseup', function () {
+        var selectedText = window.getSelection().toString();  // Get the selected text
+
+        if (selectedText.length > 0) {  // Check if text is selected
+          $("#dialogBox").dialog("open");  // Open the dialog box
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
