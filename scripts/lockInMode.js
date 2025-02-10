@@ -7,6 +7,9 @@ const lockInMode = () => {
     } else if (document.exitFullscreen) {
         document.exitFullscreen();
     }
+
+    var audio = new Audio('https://commondatastorage.googleapis.com/codeskulptor-assets/Epoq-Lepidoptera.ogg');
+    audio.play();
 }
 
 
